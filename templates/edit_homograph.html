@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit {{ word }} - Somali Homograph Database</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Edit {{ word }}</h1>
+    
+    <a href="{{ url_for('homograph_details', word=word) }}">Back to Details</a>
+    
+    <form action="{{ url_for('edit_homograph', word=word) }}" method="post">
+        <label for="definitions">Definitions (one per line):</label>
+        <textarea id="definitions" name="definitions" rows="5" required>{% for _, definition in details %}{{ definition }}
+{% endfor %}</textarea>
+        
+        <button type="submit">Update Homograph</button>
+    </form>
+</body>
+</html> 
